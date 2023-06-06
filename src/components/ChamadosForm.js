@@ -116,19 +116,19 @@ const ChamadosForm = () => {
     <div>
       <form onSubmit={handleSubmit}>
         <label>Id Coordenador:</label> <br/>
-        <input type="number" name="idCoordenador" value={chamado.idCoordenador} onChange={handleChange} className='inputs'/> <br/>
+        <input type="text" name="idCoordenador" value={chamado.idCoordenador} onChange={handleChange} className='inputs' required/> <br/>
         <label>Id Evento:</label> <br/>
-        <input type="text" name="idEvento" value={chamado.idEvento} onChange={handleChange} className='inputs'/> <br/>
+        <input type="text" name="idEvento" value={chamado.idEvento} onChange={handleChange} className='inputs' required/> <br/>
         <label>Id Caixa:</label> <br/>
-        <input type="text" name="idCaixa" value={chamado.idCaixa} onChange={handleChange} className='inputs'/> <br/>
+        <input type="text" name="idCaixa" value={chamado.idCaixa} onChange={handleChange} className='inputs' required/> <br/>
         <label>Comentário:</label> <br/>
-        <input type="text" name="comentario" value={chamado.comentario} onChange={handleChange} className='inputs'/> <br/>
+        <input type="text" name="comentario" value={chamado.comentario} onChange={handleChange} className='inputs' required/> <br/>
         <button type="submit" disabled={isSubmitting} className='saveButton'>
           {isSubmitting ? 'Salvando...' : 'Salvar'}
         </button>
       </form>
 
-      <h1 className='listTitle'>Lista de Chamados</h1>
+      <h1 className='listTitle'>Lista de Chamados:</h1>
       <ul>
         {chamados.map((chamado) => (
           <li key={chamado._id}>

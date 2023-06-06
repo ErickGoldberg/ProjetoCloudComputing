@@ -119,21 +119,21 @@ const UserForm = () => {
     <div>
       <form onSubmit={handleSubmit}>
         <label>Login:</label> <br/>
-        <input type="text" name="login" value={user.login} onChange={handleChange}  className='inputs'/> <br/>
+        <input type="text" name="login" value={user.login} onChange={handleChange}  className='inputs' required/> <br/>
         <label>Senha:</label> <br/>
-        <input type="password" name="senha" value={user.senha} onChange={handleChange}  className='inputs'/> <br/>
+        <input type="password" name="senha" value={user.senha} onChange={handleChange}  className='inputs' pattern="(?=.*[A-Za-z])(?=.*\d).{8,}" required/> <br/>
         <label>Nome:</label> <br/>
-        <input type="text" name="nome" value={user.nome} onChange={handleChange}  className='inputs'/> <br/>
+        <input type="text" name="nome" value={user.nome} onChange={handleChange}  className='inputs' pattern="[A-Za-z\s]+" title="Apenas letras são permitidas" required/> <br/>
         <label>Email:</label> <br/>
-        <input type="email" name="email" value={user.email} onChange={handleChange}  className='inputs'/> <br/>
+        <input type="email" name="email" value={user.email} onChange={handleChange}  className='inputs' pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Digite um email válido" required/> <br/>
         <label>Telefone:</label> <br/>
-        <input type="tel" name="telefone" value={user.telefone} onChange={handleChange}  className='inputs'/> <br/>
+        <input type="tel" name="telefone" value={user.telefone} onChange={handleChange}  className='inputs' pattern="[0-9]{10,}" title="Digite um número de telefone válido"  required/> <br/>
         <button type="submit" disabled={isSubmitting} className='saveButton'>
           {isSubmitting ? 'Salvando...' : 'Salvar'}
         </button>
       </form>
 
-      <h1 className='listTitle'>Lista de Usuários</h1>
+      <h1 className='listTitle'>Lista de Usuários:</h1>
       <ul>
         {users.map((user) => (
           <li key={user._id}>

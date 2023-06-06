@@ -128,27 +128,28 @@ const CashiersForm = () => {
     <div>
       <form onSubmit={handleSubmit}>
         <label>Nome:</label> <br/>
-        <input type="text" name="nome" value={cashier.nome} onChange={handleChange} className='inputs'/> <br/>
+        <input type="text" name="nome" value={cashier.nome} onChange={handleChange} className='inputs' pattern="[A-Za-z\s]+" title="Apenas letras são permitidas"  required/> <br/>
         <label>Email:</label> <br/>
-        <input type="email" name="email" value={cashier.email} onChange={handleChange} className='inputs'/> <br/>
+        <input type="email" name="email" value={cashier.email} onChange={handleChange} className='inputs' pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Digite um email válido" required/> <br/>
         <label>Data de Nascimento:</label> <br/>
-        <input type="text" name="dataNascimento" value={cashier.dataNascimento} onChange={handleChange} className='inputs'/> <br/>
+        <input type="date" name="dataNascimento" value={cashier.dataNascimento} onChange={handleChange} className='inputs' required/> <br/>
         <label>Tipo de Logradouro:</label> <br/>
-        <input type="text" name="tipoLogradouro" value={cashier.tipoLogradouro} onChange={handleChange} className='inputs'/> <br/>
+        <input type="text" name="tipoLogradouro" value={cashier.tipoLogradouro} onChange={handleChange} className='inputs' required/> <br/>
         <label>Logradouro:</label> <br/>
-        <input type="text" name="logradouro" value={cashier.logradouro} onChange={handleChange} className='inputs'/> <br/>
+        <input type="text" name="logradouro" value={cashier.logradouro} onChange={handleChange} className='inputs' required/> <br/>
         <label>Número do Logradouro:</label> <br/>
-        <input type="text" name="numeroLogradouro" value={cashier.numeroLogradouro} onChange={handleChange} className='inputs'/> <br/>
+        <input type="number" name="numeroLogradouro" value={cashier.numeroLogradouro} onChange={handleChange} className='inputs' required/> <br/>
         <label>Telefone:</label> <br/>
-        <input type="tel" name="telefone" value={cashier.telefone} onChange={handleChange} className='inputs'/> <br/>
+        <input type="tel" name="telefone" value={cashier.telefone} onChange={handleChange} className='inputs' pattern="[0-9]{10,}" title="Digite um número de telefone válido" required/> <br/>
         <label>Sexo:</label> <br/>
-        <input type="text" name="sexo" value={cashier.sexo} onChange={handleChange} className='inputs'/> <br/>
+        <input type="text" name="sexo" value={cashier.sexo} onChange={handleChange} className='inputs' pattern="[FM]"
+  title="Digite 'F' para feminino ou 'M' para masculino" required/> <br/>
         <button type="submit" disabled={isSubmitting} className='saveButton'>
           {isSubmitting ? 'Salvando...' : 'Salvar'}
         </button>
       </form>
 
-      <h1 className='listTitle'>Lista de Caixas</h1>
+      <h1 className='listTitle'>Lista de Caixas:</h1>
       <ul>
         {cashiers.map((cashier) => (
           <li key={cashier._id}>

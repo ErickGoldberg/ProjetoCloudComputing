@@ -128,27 +128,27 @@ const EventsForm = () => {
     <div>
       <form onSubmit={handleSubmit}>
         <label>Id Head:</label> <br/>
-        <input type="number" name="idHead" value={event.idHead} onChange={handleChange} className='inputs'/> <br/>
+        <input type="number" name="idHead" value={event.idHead} onChange={handleChange} className='inputs' required/> <br/>
         <label>Nome:</label> <br/>
-        <input type="text" name="nome" value={event.nome} onChange={handleChange} className='inputs'/> <br/>
+        <input type="text" name="nome" value={event.nome} onChange={handleChange} className='inputs' pattern="[A-Za-z\s]+" title="Apenas letras são permitidas" required/> <br/>
         <label>Data:</label> <br/>
-        <input type="text" name="data" value={event.data} onChange={handleChange} className='inputs'/> <br/>
+        <input type="date" name="data" value={event.data} onChange={handleChange} className='inputs' required/> <br/>
         <label>Tipo de Logradouro:</label> <br/>
-        <input type="text" name="tipoLogradouro" value={event.tipoLogradouro} onChange={handleChange} className='inputs'/> <br/>
+        <input type="text" name="tipoLogradouro" value={event.tipoLogradouro} onChange={handleChange} className='inputs' required/> <br/>
         <label>Logradouro:</label> <br/>
-        <input type="text" name="logradouro" value={event.logradouro} onChange={handleChange} className='inputs'/> <br/>
+        <input type="text" name="logradouro" value={event.logradouro} onChange={handleChange} className='inputs' required/> <br/>
         <label>Número do Logradouro:</label> <br/>
-        <input type="text" name="numeroLogradouro" value={event.numeroLogradouro} onChange={handleChange} className='inputs'/> <br/>
+        <input type="number" name="numeroLogradouro" value={event.numeroLogradouro} onChange={handleChange} className='inputs' required/> <br/>
         <label>Faturamento:</label> <br/>
-        <input type="text" name="faturamento" value={event.faturamento} onChange={handleChange} className='inputs'/> <br/>
+        <input type="text" name="faturamento" value={event.faturamento} onChange={handleChange} className='inputs' required/> <br/>
         <label>Quantidade de Caixas:</label> <br/>
-        <input type="number" name="quantidadeCaixas" value={event.quantidadeCaixas} onChange={handleChange} className='inputs'/> <br/>
+        <input type="number" name="quantidadeCaixas" value={event.quantidadeCaixas} onChange={handleChange} className='inputs' required/> <br/>
         <button type="submit" disabled={isSubmitting} className='saveButton'>
           {isSubmitting ? 'Salvando...' : 'Salvar'}
         </button>
       </form>
 
-      <h1 className='listTitle'>Lista de Eventos</h1>
+      <h1 className='listTitle'>Lista de Eventos:</h1>
       <ul>
         {events.map((event) => (
           <li key={event._id}>

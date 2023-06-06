@@ -1,9 +1,11 @@
+
+
 .navbar {
     display: flex;
     justify-content: center;
-    
-    background-color: #000000;
+    background-color: #120A8F;
     margin: auto;
+    width: 100%;
   }
   
   .navbar-container {
@@ -30,8 +32,15 @@
     font-weight: bold; 
   }
 
+  .navbar-link:hover{
+    color: rgb(14, 138, 255);
+  }
+
   .logo{
-    width: 30%;
-    position: relative;
-    margin: 0;
+    max-width: 100px;
+    height: auto;
+  }
+
+  .logo:hover{
+    opacity: 85%;
   }
