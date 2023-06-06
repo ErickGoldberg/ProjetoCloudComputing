@@ -34,6 +34,13 @@ app.post('/api/users', (req, res) => {
     .catch((err) => res.status(400).json('Erro: ' + err));
 });
 
+app.get('/api/users', (req, res) => {
+    User.find()
+      .then((users) => res.json(users))
+      .catch((err) => res.status(400).json('Erro: ' + err));
+  });
+  
+
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });
