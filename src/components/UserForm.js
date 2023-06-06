@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import editImage from '../img/editar.png'
+import deleteImage from '../img/excluir.png'
 
 const UserForm = () => {
   const [user, setUser] = useState({
@@ -116,23 +118,28 @@ const UserForm = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <input type="text" name="login" value={user.login} onChange={handleChange} placeholder="Login" />
-        <input type="password" name="senha" value={user.senha} onChange={handleChange} placeholder="Senha" />
-        <input type="text" name="nome" value={user.nome} onChange={handleChange} placeholder="Nome" />
-        <input type="email" name="email" value={user.email} onChange={handleChange} placeholder="Email" />
-        <input type="text" name="telefone" value={user.telefone} onChange={handleChange} placeholder="Telefone" />
-        <button type="submit" disabled={isSubmitting}>
+        <label>Login:</label> <br/>
+        <input type="text" name="login" value={user.login} onChange={handleChange}  className='inputs'/> <br/>
+        <label>Senha:</label> <br/>
+        <input type="password" name="senha" value={user.senha} onChange={handleChange}  className='inputs'/> <br/>
+        <label>Nome:</label> <br/>
+        <input type="text" name="nome" value={user.nome} onChange={handleChange}  className='inputs'/> <br/>
+        <label>Email:</label> <br/>
+        <input type="email" name="email" value={user.email} onChange={handleChange}  className='inputs'/> <br/>
+        <label>Telefone:</label> <br/>
+        <input type="tel" name="telefone" value={user.telefone} onChange={handleChange}  className='inputs'/> <br/>
+        <button type="submit" disabled={isSubmitting} className='saveButton'>
           {isSubmitting ? 'Salvando...' : 'Salvar'}
         </button>
       </form>
 
-      <h2>Lista de Usuários</h2>
+      <h1 className='listTitle'>Lista de Usuários</h1>
       <ul>
         {users.map((user) => (
           <li key={user._id}>
             {user.nome}
-            <button onClick={() => handleEdit(user._id)}>Editar</button>
-            <button onClick={() => handleDelete(user._id)}>Excluir</button>
+            <button className='iconsImg' onClick={() => handleEdit(user._id)}><img src={editImage} className='icons'></img></button>
+            <button className='iconsImg' onClick={() => handleDelete(user._id)}><img src={deleteImage} className='icons'></img></button>
           </li>
         ))}
       </ul>

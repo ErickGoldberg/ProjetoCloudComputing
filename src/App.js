@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import AddUser from './pages/AddUser';
+import User from './pages/User';
 import NotFound from './pages/notFound';
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<AddUser />} />
+        <Route path="/" element={<User />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
