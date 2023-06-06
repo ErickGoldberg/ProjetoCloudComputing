@@ -40,6 +40,20 @@ const cashierSchema = new mongoose.Schema({
 
 const Cashier = mongoose.model('Cashier', cashierSchema);
 
+// Definição do modelo de evento
+const eventSchema = new mongoose.Schema({
+  idHead: Number,
+  nome: String,
+  data: String,
+  tipoLogradouro: String,
+  logradouro: String,
+  numeroLogradouro: String,
+  faturamento: String,
+  quantidadeCaixas: Number
+});
+
+const Event = mongoose.model('Event', eventSchema);
+
 // Rotas de Usuários
 app.post('/api/users', (req, res) => {
   const newUser = new User(req.body);
@@ -93,6 +107,34 @@ app.put('/api/cashiers/:id', (req, res) => {
   const cashierId = req.params.id;
   Cashier.findByIdAndUpdate(cashierId, req.body)
     .then(() => res.json('Caixa atualizado com sucesso!'))
+    .catch((err) => res.status(400).json('Erro: ' + err));
+});
+
+// Rotas de Eventos
+app.post('/api/events', (req, res) => {
+  const newEvent = new Event(req.body);
+  newEvent.save()
+    .then(() => res.json('Evento adicionado com sucesso!'))
+    .catch((err) => res.status(400).json('Erro: ' + err));
+});
+
+app.delete('/api/events/:id', (req, res) => {
+  const eventId = req.params.id;
+  Event.findByIdAndDelete(eventId)
+    .then(() => res.json('Evento removido com sucesso!'))
+    .catch((err) => res.status(400).json('Erro: ' + err));
+});
+
+app.get('/api/events', (req, res) => {
+  Event.find()
+    .then((events) => res.json(events))
+    .catch((err) => res.status(400).json('Erro: ' + err));
+});
+
+app.put('/api/events/:id', (req, res) => {
+  const eventId = req.params.id;
+  Event.findByIdAndUpdate(eventId, req.body)
+    .then(() => res.json('Evento atualizado com sucesso!'))
     .catch((err) => res.status(400).json('Erro: ' + err));
 });
 

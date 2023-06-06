@@ -1,12 +1,15 @@
+import React from 'react';
 import NavBar from '../components/NavBarHome'
+import EventsForm from '../components/EventsForm'
 
-const Events = () =>{
-    return(
+const Events = () => {
+    return (
         <>
-        <NavBar/>
-        <div>
-            Events
-        </div>
+            <NavBar />
+            <main className='container'>
+                <h1>Adicionar evento</h1>
+                <EventsForm />
+            </main>
         </>
     );
 }
