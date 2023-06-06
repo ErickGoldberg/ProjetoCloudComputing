@@ -47,6 +47,13 @@ app.get('/api/users', (req, res) => {
       .catch((err) => res.status(400).json('Erro: ' + err));
 });
 
+app.put('/api/users/:id', (req, res) => {
+    const userId = req.params.id;
+    User.findByIdAndUpdate(userId, req.body)
+      .then(() => res.json('Usuário atualizado com sucesso!'))
+      .catch((err) => res.status(400).json('Erro: ' + err));
+  });
+  
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);

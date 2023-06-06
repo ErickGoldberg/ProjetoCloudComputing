@@ -11,6 +11,7 @@ const UserForm = () => {
 
   const [users, setUsers] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [editingUserId, setEditingUserId] = useState(null);
 
   useEffect(() => {
     fetchUsers();
@@ -31,33 +32,72 @@ const UserForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    fetch('http://localhost:4000/api/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(user)
-    })
-      .then((response) => {
-        setIsSubmitting(false);
-        if (response.ok) {
-          console.log('Usuário adicionado com sucesso');
-          setUser({
-            login: '',
-            senha: '',
-            nome: '',
-            email: '',
-            telefone: ''
-          });
-          fetchUsers();
-        } else {
-          console.error('Erro ao adicionar usuário');
-        }
+    if (editingUserId) {
+      fetch(`http://localhost:4000/api/users/${editingUserId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
       })
-      .catch((error) => {
-        setIsSubmitting(false);
-        console.error(error);
-      });
+        .then((response) => {
+          setIsSubmitting(false);
+          if (response.ok) {
+            console.log('Usuário atualizado com sucesso');
+            setUser({
+              login: '',
+              senha: '',
+              nome: '',
+              email: '',
+              telefone: ''
+            });
+            setEditingUserId(null);
+            fetchUsers();
+          } else {
+            console.error('Erro ao atualizar usuário');
+          }
+        })
+        .catch((error) => {
+          setIsSubmitting(false);
+          console.error(error);
+        });
+    } else {
+      fetch('http://localhost:4000/api/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+      })
+        .then((response) => {
+          setIsSubmitting(false);
+          if (response.ok) {
+            console.log('Usuário adicionado com sucesso');
+            setUser({
+              login: '',
+              senha: '',
+              nome: '',
+              email: '',
+              telefone: ''
+            });
+            fetchUsers();
+          } else {
+            console.error('Erro ao adicionar usuário');
+          }
+        })
+        .catch((error) => {
+          setIsSubmitting(false);
+          console.error(error);
+        });
+    }
+  };
+
+  const handleEdit = (userId) => {
+    const userToEdit = users.find((user) => user._id === userId);
+    if (userToEdit) {
+      setUser(userToEdit);
+      setEditingUserId(userId);
+    }
   };
 
   const handleDelete = (userId) => {
@@ -91,6 +131,7 @@ const UserForm = () => {
         {users.map((user) => (
           <li key={user._id}>
             {user.nome}
+            <button onClick={() => handleEdit(user._id)}>Editar</button>
             <button onClick={() => handleDelete(user._id)}>Excluir</button>
           </li>
         ))}
