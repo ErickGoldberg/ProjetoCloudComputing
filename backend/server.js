@@ -54,6 +54,16 @@ const eventSchema = new mongoose.Schema({
 
 const Event = mongoose.model('Event', eventSchema);
 
+// Definição do modelo de chamado
+const chamadoSchema = new mongoose.Schema({
+  idCoordenador: String,
+  idEvento: String,
+  idCaixa: String,
+  comentario: String
+});
+
+const Chamado = mongoose.model('Chamado', chamadoSchema);
+
 // Rotas de Usuários
 app.post('/api/users', (req, res) => {
   const newUser = new User(req.body);
@@ -135,6 +145,34 @@ app.put('/api/events/:id', (req, res) => {
   const eventId = req.params.id;
   Event.findByIdAndUpdate(eventId, req.body)
     .then(() => res.json('Evento atualizado com sucesso!'))
+    .catch((err) => res.status(400).json('Erro: ' + err));
+});
+
+// Rotas de Chamados
+app.post('/api/chamados', (req, res) => {
+  const newChamado = new Chamado(req.body);
+  newChamado.save()
+    .then(() => res.json('Chamado adicionado com sucesso!'))
+    .catch((err) => res.status(400).json('Erro: ' + err));
+});
+
+app.delete('/api/chamados/:id', (req, res) => {
+  const chamadoId = req.params.id;
+  Chamado.findByIdAndDelete(chamadoId)
+    .then(() => res.json('Chamado removido com sucesso!'))
+    .catch((err) => res.status(400).json('Erro: ' + err));
+});
+
+app.get('/api/chamados', (req, res) => {
+  Chamado.find()
+    .then((chamados) => res.json(chamados))
+    .catch((err) => res.status(400).json('Erro: ' + err));
+});
+
+app.put('/api/chamados/:id', (req, res) => {
+  const chamadoId = req.params.id;
+  Chamado.findByIdAndUpdate(chamadoId, req.body)
+    .then(() => res.json('Chamado atualizado com sucesso!'))
     .catch((err) => res.status(400).json('Erro: ' + err));
 });
 
