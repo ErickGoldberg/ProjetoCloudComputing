@@ -1,0 +1,37 @@
+.navbar {
+    display: flex;
+    justify-content: center;
+    
+    background-color: #000000;
+    margin: auto;
+  }
+  
+  .navbar-container {
+    width: 100%;
+    max-width: 800px; /* Defina um valor máximo de largura conforme necessário */
+  }
+  
+  .navbar-items {
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    list-style-type: none;
+    padding: 0;
+    
+  }
+  
+  .navbar-item {
+    margin-right: 10px; 
+  }
+  
+  .navbar-link {
+    text-decoration: none;
+    color: aliceblue;
+    font-weight: bold; 
+  }
+
+  .logo{
+    width: 30%;
+    position: relative;
+    margin: 0;
+  }

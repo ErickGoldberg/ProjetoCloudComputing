@@ -1,7 +1,10 @@
+import React from "react";
+import NavBar from '../components/NavBarHome'
+
 const Home = () =>{
     return(
         <div>
-            Home
+            <NavBar />
         </div>
     );
 }
