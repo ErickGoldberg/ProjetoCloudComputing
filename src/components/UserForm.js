@@ -60,6 +60,19 @@ const UserForm = () => {
       });
   };
 
+  const handleDelete = (userId) => {
+    fetch(`http://localhost:4000/api/users/${userId}`, {
+      method: 'DELETE'
+    })
+      .then(() => {
+        console.log('Usuário removido com sucesso');
+        fetchUsers();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -76,7 +89,10 @@ const UserForm = () => {
       <h2>Lista de Usuários</h2>
       <ul>
         {users.map((user) => (
-          <li key={user._id}>{user.nome}</li>
+          <li key={user._id}>
+            {user.nome}
+            <button onClick={() => handleDelete(user._id)}>Excluir</button>
+          </li>
         ))}
       </ul>
     </div>
