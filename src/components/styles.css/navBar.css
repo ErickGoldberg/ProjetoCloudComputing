@@ -1,25 +1,22 @@
-
-
 .navbar {
     display: flex;
     justify-content: center;
     background-color: #120A8F;
     margin: auto;
     width: 100%;
+    height: 70px;
   }
   
   .navbar-container {
     width: 100%;
-    max-width: 800px; /* Defina um valor máximo de largura conforme necessário */
+    max-width: 800px;
   }
   
   .navbar-items {
     display: flex;
     justify-content: space-around;
-    align-items:center;
+    padding-top: 20px;
     list-style-type: none;
-    padding: 0;
-    
   }
   
   .navbar-item {
@@ -38,7 +35,9 @@
 
   .logo{
     max-width: 100px;
-    height: auto;
+    margin-bottom: 20px;
+    position: relative;
+    top: -38px;
   }
 
   .logo:hover{

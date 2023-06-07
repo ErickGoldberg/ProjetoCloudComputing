@@ -1,0 +1,60 @@
+.homepage { 
+    margin-top: 50px;
+  }
+
+.containerHome{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}  
+
+  h1{
+    text-align: center;
+  }
+
+  h2{
+    padding-top: 40px;
+    font-size: 35px;
+  }
+
+  .navLeft{
+    width: 40%;
+  }
+
+  .services{
+    padding-bottom: 120px;
+    float: right;
+  }
+
+  .servicesList{
+    list-style: none;
+    padding-top: 10px;
+  }
+
+  p{
+    padding-top: 10px;
+    font-size: 20px;
+    line-height: 25px;
+  }
+  
+  .instagram-icon {
+    width: 30px;
+    height: 30px;
+    margin-top: 20px;
+  }
+
+  h3{
+    font-size: 30px;
+  }
+
+  .footer {
+    background-color: #f2f2f2;
+    padding-bottom: 20px;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    
+  }
+  
