@@ -23,7 +23,7 @@ const CashiersForm = () => {
   }, []);
 
   const fetchCashiers = () => {
-    fetch('http://ec2-52-201-73-66.compute-1.amazonaws.com/api/cashiers')
+    fetch('http://ec2-52-201-73-66.compute-1.amazonaws.com:4000/api/cashiers')
       .then((response) => response.json())
       .then((data) => setCashiers(data))
       .catch((error) => console.error(error));
@@ -38,7 +38,7 @@ const CashiersForm = () => {
     setIsSubmitting(true);
 
     if (editingCashierId) {
-      fetch(`http://ec2-52-201-73-66.compute-1.amazonaws.com/api/cashiers/${editingCashierId}`, {
+      fetch(`http://ec2-52-201-73-66.compute-1.amazonaws.com:4000/api/cashiers/${editingCashierId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -70,7 +70,7 @@ const CashiersForm = () => {
           console.error(error);
         });
     } else {
-      fetch('http://ec2-52-201-73-66.compute-1.amazonaws.com/api/cashiers', {
+      fetch('http://ec2-52-201-73-66.compute-1.amazonaws.com:4000/api/cashiers', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -112,7 +112,7 @@ const CashiersForm = () => {
   };
 
   const handleDelete = (cashierId) => {
-    fetch(`http://ec2-52-201-73-66.compute-1.amazonaws.com/api/cashiers/${cashierId}`, {
+    fetch(`http://ec2-52-201-73-66.compute-1.amazonaws.com:4000/api/cashiers/${cashierId}`, {
       method: 'DELETE'
     })
       .then(() => {

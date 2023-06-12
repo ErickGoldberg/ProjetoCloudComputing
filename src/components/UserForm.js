@@ -20,7 +20,7 @@ const UserForm = () => {
   }, []);
 
   const fetchUsers = () => {
-    fetch('http://ec2-52-201-73-66.compute-1.amazonaws.com/api/users')
+    fetch('http://ec2-52-201-73-66.compute-1.amazonaws.com:4000/api/users')
       .then((response) => response.json())
       .then((data) => setUsers(data))
       .catch((error) => console.error(error));
@@ -35,7 +35,7 @@ const UserForm = () => {
     setIsSubmitting(true);
 
     if (editingUserId) {
-      fetch(`http://ec2-52-201-73-66.compute-1.amazonaws.com/api/users/${editingUserId}`, {
+      fetch(`http://ec2-52-201-73-66.compute-1.amazonaws.com:4000/api/users/${editingUserId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -64,7 +64,7 @@ const UserForm = () => {
           console.error(error);
         });
     } else {
-      fetch('http://ec2-52-201-73-66.compute-1.amazonaws.com/api/users', {
+      fetch('http://ec2-52-201-73-66.compute-1.amazonaws.com:4000/api/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -103,7 +103,7 @@ const UserForm = () => {
   };
 
   const handleDelete = (userId) => {
-    fetch(`http://ec2-52-201-73-66.compute-1.amazonaws.com/api/users/${userId}`, {
+    fetch(`http://ec2-52-201-73-66.compute-1.amazonaws.com:4000/api/users/${userId}`, {
       method: 'DELETE'
     })
       .then(() => {
