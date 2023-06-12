@@ -19,7 +19,7 @@ const ChamadosForm = () => {
   }, []);
 
   const fetchChamados = () => {
-    fetch('http://localhost:4000/api/chamados')
+    fetch('http://ec2-52-201-73-66.compute-1.amazonaws.com/api/chamados')
       .then((response) => response.json())
       .then((data) => setChamados(data))
       .catch((error) => console.error(error));
@@ -34,7 +34,7 @@ const ChamadosForm = () => {
     setIsSubmitting(true);
 
     if (editingChamadoId) {
-      fetch(`http://localhost:4000/api/chamados/${editingChamadoId}`, {
+      fetch(`http://ec2-52-201-73-66.compute-1.amazonaws.com/api/chamados/${editingChamadoId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -62,7 +62,7 @@ const ChamadosForm = () => {
           console.error(error);
         });
     } else {
-      fetch('http://localhost:4000/api/chamados', {
+      fetch('http://ec2-52-201-73-66.compute-1.amazonaws.com/api/chamados', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -100,7 +100,7 @@ const ChamadosForm = () => {
   };
 
   const handleDelete = (chamadoId) => {
-    fetch(`http://localhost:4000/api/chamados/${chamadoId}`, {
+    fetch(`http://ec2-52-201-73-66.compute-1.amazonaws.com/api/chamados/${chamadoId}`, {
       method: 'DELETE'
     })
       .then(() => {

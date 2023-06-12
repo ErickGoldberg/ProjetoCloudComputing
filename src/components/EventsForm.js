@@ -23,7 +23,7 @@ const EventsForm = () => {
   }, []);
 
   const fetchEvents = () => {
-    fetch('http://localhost:4000/api/events')
+    fetch('http://ec2-52-201-73-66.compute-1.amazonaws.com/api/events')
       .then((response) => response.json())
       .then((data) => setEvents(data))
       .catch((error) => console.error(error));
@@ -38,7 +38,7 @@ const EventsForm = () => {
     setIsSubmitting(true);
 
     if (editingEventId) {
-      fetch(`http://localhost:4000/api/events/${editingEventId}`, {
+      fetch(`http://ec2-52-201-73-66.compute-1.amazonaws.com/api/events/${editingEventId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -70,7 +70,7 @@ const EventsForm = () => {
           console.error(error);
         });
     } else {
-      fetch('http://localhost:4000/api/events', {
+      fetch('http://ec2-52-201-73-66.compute-1.amazonaws.com/api/events', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -112,7 +112,7 @@ const EventsForm = () => {
   };
 
   const handleDelete = (eventId) => {
-    fetch(`http://localhost:4000/api/events/${eventId}`, {
+    fetch(`http://ec2-52-201-73-66.compute-1.amazonaws.com/api/events/${eventId}`, {
       method: 'DELETE'
     })
       .then(() => {
