@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 // Conexão com o banco de dados (certifique-se de ter o MongoDB instalado e em execução)
-mongoose.connect('mongodb://localhost:27017/crud', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://ec2-52-201-73-66.compute-1.amazonaws.com:27017/crud', { useNewUrlParser: true, useUnifiedTopology: true });
 const connection = mongoose.connection;
 connection.once('open', () => {
   console.log('Conexão com o banco de dados estabelecida com sucesso!');
