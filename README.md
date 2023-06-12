@@ -5,7 +5,7 @@ O projeto consiste em criar pelo menos 4 cruds integrando back e front com a lin
 - Clonar o projeto
 - Estar conectado ao banco mongodb local
 - Rodar o comando "npm start" para rodar o front-end em react
-- entrar na pasta backend "cd backend" e rodar o comando "npm server.js" para rodar o backend com o banco de dados
+- entrar na pasta backend "cd backend" e rodar o comando "node server.js" para rodar o backend com o banco de dados
 
 ## Technologies:
 - React.Js
